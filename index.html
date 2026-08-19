@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- [EDIT] PAGE TITLE + META DESCRIPTION — business name, neighborhood, one-line value prop -->
+<title>22 Pell Hair Salon — Chinatown, NYC</title>
+<meta name="description" content="22 Pell Hair Salon — precision cuts, color, and styling in the heart of Chinatown. 22 Pell St, New York, NY 10013.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* [EDIT] PALETTE — swap --brass/--brass-2/--brass-dim for a different accent (gold/brass reads masculine-classic;
+     try a muted rose, sage, or terracotta for a softer salon feel). Keep --ink dark enough for AA contrast with --cream. */
+  :root{
+    --ink:#141110;
+    --ink-2:#1d1815;
+    --ink-3:#241e19;
+    --cream:#f6f1e7;
+    --cream-2:#efe7d8;
+    --paper:#faf7f1;
+    --brass:#c6a15b;
+    --brass-2:#e3c383;
+    --brass-dim:#8a713d;
+    --muted-on-dark:#b9ae9d;
+    --muted-on-light:#6f6558;
+    --line-dark:rgba(246,241,231,0.14);
+    --line-light:#e4dcc9;
+    --max:1240px;
+    --gap:24px;
+    --radius:2px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *,*::before,*::after{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,video{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  ul{margin:0;padding:0;list-style:none;}
+  h1,h2,h3,h4{margin:0;font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:-0.01em;}
+  p{margin:0;}
+  .zh{font-family:'Noto Sans SC','Inter',sans-serif;}
+  p.zh, .desc .zh{display:block; margin-top:6px;}
+  .container{max-width:var(--max);margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.22em;
+    font-size:14px;
+    color:var(--brass);
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    font-size:16px;
+    padding:14px 28px;
+    border-radius:var(--radius);
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform .25s var(--ease), background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
+    min-height:48px;
+    white-space:nowrap;
+  }
+  .btn:focus-visible{outline:3px solid var(--brass-2); outline-offset:3px;}
+  .btn svg{width:18px;height:18px;flex:none;}
+  .btn-primary{background:var(--brass); color:var(--ink);}
+  .btn-primary:hover{background:var(--brass-2); transform:translateY(-2px);}
+  .btn-outline-dark{border-color:rgba(246,241,231,.5); color:var(--cream);}
+  .btn-outline-dark:hover{border-color:var(--cream); background:rgba(246,241,231,.08); transform:translateY(-2px);}
+  .btn-outline-light{border-color:var(--ink); color:var(--ink);}
+  .btn-outline-light:hover{background:var(--ink); color:var(--cream); transform:translateY(-2px);}
+  .btn-block{width:100%; justify-content:center;}
+
+  .visually-hidden{position:absolute; width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
+  .skip-link{
+    position:absolute; left:12px; top:-60px; background:var(--brass); color:var(--ink);
+    padding:10px 18px; font-family:'Barlow Condensed',sans-serif; font-weight:700; text-transform:uppercase;
+    z-index:1000; transition:top .2s var(--ease); border-radius:var(--radius);
+  }
+  .skip-link:focus{top:12px;}
+
+  /* ---------- NAV ---------- */
+  header.site-nav{
+    position:fixed; top:0; left:0; right:0; z-index:500;
+    padding:18px 0;
+    transition:background .35s var(--ease), padding .35s var(--ease), box-shadow .35s var(--ease);
+  }
+  header.site-nav.scrolled{
+    background:rgba(20,17,16,.92);
+    backdrop-filter:blur(10px);
+    padding:12px 0;
+    box-shadow:0 6px 24px rgba(0,0,0,.25);
+  }
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:24px;}
+  .logo{display:flex; align-items:center; gap:10px; font-family:'Barlow Condensed',sans-serif; color:var(--cream);}
+  .logo svg{width:30px;height:30px;flex:none; color:var(--brass);}
+  .logo .wordmark{font-weight:800; font-size:20px; letter-spacing:.03em; line-height:1;}
+  .logo .wordmark small{display:block; font-family:'Barlow Condensed',sans-serif; font-weight:500; font-size:14px; letter-spacing:.2em; color:var(--brass); margin-top:3px; white-space:nowrap;}
+  nav.primary-links{display:flex; align-items:center; gap:22px;}
+  nav.primary-links a{
+    font-family:'Barlow Condensed',sans-serif; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+    font-size:15px; color:var(--cream); position:relative; padding:6px 2px; white-space:nowrap;
+  }
+  nav.primary-links a::after{
+    content:""; position:absolute; left:0; right:100%; bottom:0; height:2px; background:var(--brass);
+    transition:right .3s var(--ease);
+  }
+  nav.primary-links a:hover::after, nav.primary-links a:focus-visible::after{right:0;}
+  .nav-actions{display:flex; align-items:center; gap:16px;}
+  .nav-cta{display:flex;}
+  .menu-toggle{
+    display:none; background:none; border:1px solid var(--line-dark); color:var(--cream);
+    width:46px; height:46px; align-items:center; justify-content:center; border-radius:var(--radius); cursor:pointer;
+  }
+  .menu-toggle svg{width:20px;height:20px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; min-height:100dvh; display:flex; flex-direction:column; justify-content:flex-end;
+    overflow:hidden; background:var(--ink);
+  }
+  .hero-media{position:absolute; inset:0; z-index:0;}
+  .hero-media video, .hero-media img{width:100%; height:100%; object-fit:cover; object-position:center 30%;}
+  .hero-media::after{
+    content:""; position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(15,12,10,.55) 0%, rgba(15,12,10,.25) 30%, rgba(15,12,10,.55) 68%, rgba(15,12,10,.95) 100%),
+      linear-gradient(90deg, rgba(15,12,10,.5) 0%, rgba(15,12,10,0) 40%);
+  }
+  .hero-content{position:relative; z-index:1; padding:180px 0 64px;}
+  .hero-tag{color:var(--brass-2); margin-bottom:18px; display:flex; align-items:center; gap:10px;}
+  .hero-tag svg{width:16px;height:16px;}
+  h1.hero-title{
+    color:var(--cream);
+    font-size:clamp(52px, 11vw, 148px);
+    line-height:.86;
+    font-weight:900;
+    letter-spacing:-.01em;
+  }
+  h1.hero-title .accent{color:var(--brass);}
+  .hero-sub{
+    max-width:520px; color:var(--cream-2); font-size:18px; margin:26px 0 36px; font-family:'Inter',sans-serif; font-weight:400;
+  }
+  .hero-actions{display:flex; flex-wrap:wrap; gap:16px; align-items:center;}
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:28px; margin-top:56px; padding-top:26px; border-top:1px solid var(--line-dark);
+  }
+  .hero-meta-item{display:flex; align-items:center; gap:10px; color:var(--muted-on-dark); font-size:14px;}
+  .hero-meta-item svg{width:18px;height:18px; color:var(--brass); flex:none;}
+  .hero-meta-item strong{color:var(--cream); font-weight:600;}
+
+  .scroll-cue{
+    position:absolute; right:28px; bottom:28px; z-index:1; display:flex; flex-direction:column; align-items:center; gap:10px;
+    color:var(--muted-on-dark);
+  }
+  .scroll-cue span{writing-mode:vertical-rl; font-family:'Barlow Condensed',sans-serif; letter-spacing:.28em; font-size:14px; text-transform:uppercase;}
+  .scroll-cue .line{width:1px; height:52px; background:linear-gradient(var(--brass), transparent); animation:scrollpulse 2.2s ease-in-out infinite;}
+  @keyframes scrollpulse{0%,100%{opacity:.3;} 50%{opacity:1;}}
+  @media (prefers-reduced-motion: reduce){ .scroll-cue .line{animation:none; opacity:.7;} }
+
+  /* ---------- SECTION SHELLS ---------- */
+  section{position:relative;}
+  .section-pad{padding:110px 0;}
+  .section-pad-sm{padding:72px 0;}
+  .dark{background:var(--ink); color:var(--cream);}
+  .light{background:var(--paper); color:var(--ink);}
+  .tint{background:var(--cream-2); color:var(--ink);}
+
+  .section-head{max-width:760px; margin:0 0 56px;}
+  .section-head .eyebrow{margin-bottom:14px; display:block;}
+  .section-head h2{font-size:clamp(34px,5vw,58px); line-height:.95;}
+  .section-head p.lede{margin-top:20px; font-size:17px; max-width:560px;}
+  .dark .section-head p.lede{color:var(--muted-on-dark);}
+  .light .section-head p.lede, .tint .section-head p.lede{color:var(--muted-on-light);}
+
+  .chip{
+    display:inline; font-size:inherit; font-weight:inherit; letter-spacing:inherit; text-transform:inherit;
+    padding:0; border-radius:0; border:none; color:var(--brass); vertical-align:baseline; margin:0; white-space:normal;
+  }
+
+  /* ---------- STATEMENT ---------- */
+  .statement{max-width:1080px;}
+  .statement h2{font-size:clamp(30px, 5.4vw, 62px); line-height:1.06;}
+  .statement-foot{display:flex; flex-wrap:wrap; gap:40px; justify-content:space-between; align-items:flex-end; margin-top:44px;}
+  .statement-foot p{max-width:480px; font-size:16px;}
+  .light .statement-foot p, .tint .statement-foot p{color:var(--muted-on-light);}
+
+  /* ---------- SERVICES CARDS ---------- */
+  .service-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap);}
+  .service-card{
+    position:relative; aspect-ratio:3/4; border-radius:var(--radius); overflow:hidden; background:var(--ink);
+    isolation:isolate;
+  }
+  .service-card img{width:100%; height:100%; object-fit:cover; transition:transform .7s var(--ease);}
+  .service-card::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,17,16,0) 35%, rgba(20,17,16,.92) 100%); z-index:1;}
+  .service-card:hover img{transform:scale(1.06);}
+  .service-card-body{position:absolute; left:0; right:0; bottom:0; z-index:2; padding:22px;}
+  .service-card-body h3{color:var(--cream); font-size:24px; letter-spacing:.01em;}
+  .service-card-body span{display:block; margin-top:6px; font-family:'Barlow Condensed',sans-serif; font-size:14px; letter-spacing:.1em; text-transform:uppercase; color:var(--brass-2);}
+  .service-card-tag{
+    position:absolute; top:16px; right:16px; z-index:2; width:34px; height:34px; border-radius:50%;
+    background:rgba(20,17,16,.55); border:1px solid rgba(246,241,231,.35); display:flex; align-items:center; justify-content:center;
+  }
+  .service-card-tag svg{width:15px; height:15px; color:var(--cream);}
+  .services-foot{display:flex; justify-content:center; margin-top:44px;}
+  .link-underline{
+    font-family:'Barlow Condensed',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.1em; font-size:15px;
+    border-bottom:1px solid currentColor; padding-bottom:4px; transition:opacity .2s var(--ease);
+  }
+  .link-underline:hover{opacity:.65;}
+
+  /* ---------- MENU / PRICING ---------- */
+  .menu-wrap{display:grid; grid-template-columns:1fr 1fr; gap:56px;}
+  .menu-col h3{
+    font-size:20px; color:var(--brass); letter-spacing:.08em; padding-bottom:14px; margin-bottom:6px; border-bottom:1px solid var(--line-dark);
+  }
+  .menu-row{
+    display:flex; justify-content:space-between; align-items:baseline; gap:16px; padding:16px 0; border-bottom:1px solid var(--line-dark);
+  }
+  .menu-row:last-child{border-bottom:none;}
+  .menu-row .name{font-weight:600; font-size:16px;}
+  .menu-row .desc{display:block; font-size:14px; color:var(--muted-on-dark); margin-top:4px; font-weight:400;}
+  .menu-row .price{font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:19px; color:var(--brass-2); white-space:nowrap;}
+  .menu-note{margin-top:28px; font-size:14px; color:var(--muted-on-dark);}
+
+  /* ---------- REVIEWS ---------- */
+  .review-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap); margin-top:56px;}
+  .review-card{
+    background:var(--paper); border:1px solid var(--line-light); border-radius:var(--radius); padding:28px; display:flex; flex-direction:column; gap:16px;
+  }
+  .stars{display:flex; gap:3px; color:var(--brass);}
+  .stars svg{width:16px; height:16px;}
+  .review-quote{font-size:16px; line-height:1.6; flex:1;}
+  .review-who{display:flex; align-items:center; gap:12px; padding-top:14px; border-top:1px solid var(--line-light);}
+  .review-avatar{
+    width:40px; height:40px; border-radius:50%; background:var(--ink); color:var(--brass-2); display:flex; align-items:center; justify-content:center;
+    font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:15px; flex:none;
+  }
+  .review-who .name{font-weight:600; font-size:14px;}
+  .review-who .svc{display:block; font-size:14px; color:var(--muted-on-light);}
+
+  /* ---------- STORY ---------- */
+  .story-grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:64px; align-items:center;}
+  .story-frame{position:relative;}
+  .story-frame .ring{
+    aspect-ratio:1/1; border-radius:50%; overflow:hidden; border:10px solid var(--ink-3); box-shadow:0 30px 70px rgba(0,0,0,.45);
+    max-width:440px; margin:0 auto;
+  }
+  .story-frame .ring video, .story-frame .ring img{width:100%; height:100%; object-fit:cover;}
+  .story-frame .badge{
+    position:absolute; bottom:6%; left:6%; background:var(--brass); color:var(--ink); width:112px; height:112px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; text-align:center; font-family:'Barlow Condensed',sans-serif;
+    font-weight:800; font-size:14px; line-height:1.15; letter-spacing:.02em; box-shadow:0 12px 30px rgba(0,0,0,.35);
+  }
+  .story-copy h2{font-size:clamp(32px,4.6vw,54px); margin-bottom:22px;}
+  .story-copy p{color:var(--muted-on-dark); font-size:17px; max-width:520px; margin-bottom:16px;}
+  .story-stats{display:flex; gap:44px; margin-top:36px; padding-top:30px; border-top:1px solid var(--line-dark); flex-wrap:wrap;}
+  .story-stat .num{font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:44px; color:var(--brass-2); line-height:1;}
+  .story-stat .label{font-size:14px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted-on-dark); margin-top:8px;}
+
+  /* ---------- WATCH THE CRAFT ---------- */
+  .craft{position:relative; aspect-ratio:16/8; overflow:hidden; border-radius:var(--radius);}
+  .craft video, .craft img{width:100%; height:100%; object-fit:cover;}
+  .craft::after{content:""; position:absolute; inset:0; background:linear-gradient(0deg, rgba(15,12,10,.75) 0%, rgba(15,12,10,0) 45%);}
+  .craft-caption{position:absolute; left:0; right:0; bottom:0; padding:34px; z-index:2; display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap;}
+  .craft-caption h3{color:var(--cream); font-size:clamp(24px,3.4vw,36px);}
+  .craft-caption p{color:var(--cream-2); max-width:420px; margin-top:8px; font-size:15px;}
+  .sound-toggle{
+    background:rgba(20,17,16,.6); border:1px solid rgba(246,241,231,.4); color:var(--cream); width:48px; height:48px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; cursor:pointer; flex:none;
+  }
+  .sound-toggle svg{width:18px; height:18px;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;}
+  .info-row{display:flex; gap:16px; padding:20px 0; border-bottom:1px solid var(--line-dark);}
+  .info-row svg{width:22px; height:22px; color:var(--brass); flex:none; margin-top:2px;}
+  .info-row h4{font-size:14px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted-on-dark); margin-bottom:6px; font-family:'Barlow Condensed',sans-serif; font-weight:700;}
+  .info-row p{font-size:16px; line-height:1.6;}
+  .info-row a.plain{text-decoration:underline; text-underline-offset:3px; text-decoration-color:var(--brass-dim);}
+  .map-frame{border-radius:var(--radius); overflow:hidden; border:1px solid var(--line-dark); aspect-ratio:4/3; background:var(--ink-3);}
+  .map-frame iframe{width:100%; height:100%; border:0; filter:grayscale(.35) contrast(1.05);}
+
+  form.contact-form{display:flex; flex-direction:column; gap:20px;}
+  .field{display:flex; flex-direction:column; gap:8px;}
+  .field label{font-family:'Barlow Condensed',sans-serif; font-size:14px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted-on-dark);}
+  .field input, .field select, .field textarea{
+    background:var(--ink-2); border:1px solid var(--line-dark); color:var(--cream); padding:14px 16px; font-size:16px;
+    border-radius:var(--radius); font-family:'Inter',sans-serif; min-height:48px;
+  }
+  .field textarea{min-height:110px; resize:vertical;}
+  .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible{outline:2px solid var(--brass); outline-offset:1px;}
+  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .form-note{font-size:14px; color:var(--muted-on-dark);}
+  .form-status{font-size:14px; padding:12px 16px; border-radius:var(--radius); display:none;}
+  .form-status.show{display:block;}
+  .form-status.ok{background:rgba(198,161,91,.14); border:1px solid var(--brass-dim); color:var(--brass-2);}
+
+  /* ---------- CTA BAND ---------- */
+  .cta-band{
+    position:relative; overflow:hidden; padding:90px 0; text-align:center; background:var(--ink);
+  }
+  .cta-band h2{font-size:clamp(32px,5.6vw,64px); color:var(--cream); margin-bottom:18px;}
+  .cta-band p{color:var(--muted-on-dark); font-size:17px; max-width:480px; margin:0 auto 34px;}
+  .cta-actions{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink-2); color:var(--muted-on-dark); padding:64px 0 28px;}
+  .footer-top{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; padding-bottom:44px; border-bottom:1px solid var(--line-dark);}
+  .footer-brand p{margin-top:16px; max-width:280px; font-size:14px; line-height:1.7;}
+  .footer-col h4{font-family:'Barlow Condensed',sans-serif; color:var(--cream); font-size:14px; letter-spacing:.1em; text-transform:uppercase; margin-bottom:18px;}
+  .footer-col li{margin-bottom:11px; font-size:14.5px;}
+  .footer-col a:hover{color:var(--brass-2);}
+  .social-row{display:flex; gap:12px; margin-top:18px;}
+  .social-row a{
+    width:38px; height:38px; border:1px solid var(--line-dark); border-radius:50%; display:flex; align-items:center; justify-content:center;
+  }
+  .social-row a:hover{border-color:var(--brass); color:var(--brass-2);}
+  .social-row svg{width:16px; height:16px;}
+  .footer-bottom{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; padding-top:26px; font-size:14px;}
+
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .8s var(--ease), transform .8s var(--ease);}
+  .reveal.in{opacity:1; transform:none;}
+  @media (prefers-reduced-motion: reduce){ .reveal{opacity:1; transform:none;} }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:980px){
+    .service-grid{grid-template-columns:repeat(2,1fr);}
+    .story-grid, .menu-wrap, .contact-grid, .footer-top{grid-template-columns:1fr;}
+    .story-grid{gap:44px;}
+    .footer-top{gap:36px;}
+  }
+  @media (max-width:760px){
+    nav.primary-links, .nav-cta{display:none;}
+    .menu-toggle{display:flex;}
+    .service-grid{grid-template-columns:1fr;}
+    .review-grid{grid-template-columns:1fr;}
+    .hero-content{padding-top:150px;}
+    .field-row{grid-template-columns:1fr;}
+    .scroll-cue{display:none;}
+    .craft-caption{flex-direction:column; align-items:flex-start;}
+  }
+
+  .mobile-panel{
+    position:fixed; inset:0; z-index:600; background:var(--ink); display:flex; flex-direction:column;
+    padding:24px 28px 40px; transform:translateY(-100%); transition:transform .4s var(--ease); overflow-y:auto;
+  }
+  .mobile-panel.open{transform:translateY(0);}
+  .mobile-panel-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:40px;}
+  .mobile-panel nav{display:flex; flex-direction:column; gap:6px;}
+  .mobile-panel nav a{
+    font-family:'Barlow Condensed',sans-serif; font-weight:700; text-transform:uppercase; font-size:34px; color:var(--cream);
+    padding:14px 0; border-bottom:1px solid var(--line-dark);
+  }
+  .mobile-panel .btn{margin-top:32px;}
+  .mobile-panel-close{background:none; border:1px solid var(--line-dark); color:var(--cream); width:46px; height:46px; border-radius:var(--radius); display:flex; align-items:center; justify-content:center;}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ============ NAV ============ -->
+<!-- [EDIT] NAV — business name (wordmark + small tag line), phone number in the Book by Phone button (appears ~6x on page — search/replace the tel: value and display number everywhere) -->
+<header class="site-nav" id="siteNav">
+  <div class="container nav-inner">
+    <a href="#top" class="logo" aria-label="22 Pell Hair Salon — home">
+      <img src="assets/logo.png" alt="" aria-hidden="true" style="width:30px;height:30px;object-fit:contain;flex:none;">
+      <span class="wordmark">22 Pell Hair Salon<small>Chinatown&nbsp;·&nbsp;Est. 2012</small></span>
+    </a>
+    <nav class="primary-links" aria-label="Primary">
+      <a href="#top">Top</a>
+      <a href="#services">Our Services</a>
+      <a href="#menu">Pricing</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#story">The Story</a>
+      <a href="#contact">Find Us</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn btn-primary nav-cta" href="tel:+12122336789">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.78.66 2.61a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.47-1.27a2 2 0 0 1 2.11-.45c.83.32 1.71.54 2.61.66A2 2 0 0 1 22 16.92Z"/></svg>
+        Book by Phone
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-panel" id="mobilePanel">
+  <div class="mobile-panel-top">
+    <span class="logo"><img src="assets/logo.png" alt="" aria-hidden="true" style="width:30px;height:30px;object-fit:contain;flex:none;"><span class="wordmark">22 Pell Hair Salon</span></span>
+    <button class="mobile-panel-close" id="mobileClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <nav aria-label="Mobile">
+    <a href="#top">Top</a>
+    <a href="#services">Our Services</a>
+    <a href="#menu">Pricing</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#story">The Story</a>
+    <a href="#contact">Find Us</a>
+  </nav>
+  <a class="btn btn-primary btn-block" href="tel:+12122336789">Book by Phone — (212) 233-6789</a>
+</div>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<!-- [EDIT] HERO — address/neighborhood tag, headline (business name, split across 2 lines with one word in the accent color),
+     subhead sentence, today's hours snippet, phone. hero.mp4/hero-poster.jpg come from process_videos.sh (clip #1: the most
+     visually striking close-up shot). -->
+<section class="hero" id="top">
+  <div class="hero-media">
+    <video autoplay muted loop playsinline poster="assets/hero-poster.jpg" id="heroVideo">
+      <source src="assets/hero.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="container hero-content">
+    <p class="hero-tag reveal">
+      22 Pell St · Chinatown, NYC
+    </p>
+    <h1 class="hero-title reveal">22 PELL<br>HAIR <span class="accent">SALON</span></h1>
+    <p class="hero-sub reveal">Precision cuts, honest color, and finished styling — done by hand, one client at a time, right on Pell Street.<br><span class="zh" lang="zh-Hans">精准剪裁,专业染烫,细致造型——手工用心打造,一位客人一次,就在佩尔街。</span></p>
+    <div class="hero-actions reveal">
+      <a class="btn btn-primary" href="tel:+12122336789">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.78.66 2.61a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.47-1.27a2 2 0 0 1 2.11-.45c.83.32 1.71.54 2.61.66A2 2 0 0 1 22 16.92Z"/></svg>
+        Book an Appointment
+      </a>
+      <a class="btn btn-outline-dark" href="#services">
+        View Services
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="hero-meta reveal">
+      <div class="hero-meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <span>Open today <strong>10am – 7pm</strong></span>
+      </div>
+      <div class="hero-meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.78.66 2.61a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.47-1.27a2 2 0 0 1 2.11-.45c.83.32 1.71.54 2.61.66A2 2 0 0 1 22 16.92Z"/></svg>
+        <strong>(212) 233-6789</strong>
+      </div>
+      <div class="hero-meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        <span>Walk-ins welcome</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"><span>Scroll</span><span class="line"></span></div>
+</section>
+
+<!-- ============ STATEMENT ============ -->
+<!-- [EDIT] STATEMENT — one bold sentence capturing the shop's philosophy, with 2-3 small pill "chips" inline (est. year,
+     a value word, a differentiator). This is the section that most needs a distinct voice per business — a barbershop
+     statement should sound different from a salon's. -->
+<section class="light section-pad">
+  <div class="container">
+    <div class="statement reveal">
+      <h2>WE BRING <span class="chip">Precision</span> CUTS AND COLOR CRAFT TO <span class="chip">Every Client</span> EVERY VISIT</h2>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES GRID ============ -->
+<!-- [EDIT] SERVICES GRID — 3 category cards. Thumbnails use the 3 poster stills so nothing autoplays here.
+     Barbershop default: Classic Cuts / Beard & Shave / Kids & Combos. Salon default: Cut & Style / Color & Highlights / Treatments & Extras. -->
+<section class="tint section-pad" id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">What We Do</span>
+      <h2>Our Services</h2>
+      <p class="lede">From a quick blowout before work to a full color transformation, every service is done by hand with an eye for precision.<br><span class="zh" lang="zh-Hans">从上班前的快速吹风造型,到全套染发大变身,每一项服务都由发型师手工用心完成,精益求精。</span></p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card reveal">
+        <img src="assets/hero-poster.jpg" alt="Stylist sectioning hair with a comb for a precision haircut">
+        <div class="service-card-body">
+          <h3>Cut &amp; Style</h3>
+          <span>4 services · from $32</span>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <img src="assets/story-poster.jpg" alt="Stylist applying color and highlights to a client's hair">
+        <div class="service-card-body">
+          <h3>Color &amp; Highlights</h3>
+          <span>4 services · from $50</span>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <img src="assets/gallery-poster.jpg" alt="Stylist finishing a blowout in the salon">
+        <div class="service-card-body">
+          <h3>Treatments &amp; Extras</h3>
+          <span>4 services · from $25</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MENU / PRICING ============ -->
+<!-- [EDIT] PRICING MENU — 2 columns x 4 rows. See reference/content-guide.md for realistic barbershop vs salon
+     service names and price ranges by neighborhood tier. -->
+<section class="dark section-pad" id="menu">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Menu</span>
+      <h2>Pricing</h2>
+      <p class="lede">Straightforward pricing, no upsells at the chair. Cash and card accepted.</p>
+    </div>
+    <div class="menu-wrap">
+      <div class="menu-col reveal">
+        <h3>Cut &amp; Style</h3>
+        <div class="menu-row">
+          <div><span class="name">Women's Haircut</span><span class="desc">Consultation, shampoo, cut and blow-dry finish<span class="zh" lang="zh-Hans">咨询、洗发、剪发及吹风造型</span></span></div>
+          <span class="price">$65</span>
+        </div>
+        <div class="menu-row">
+          <div><span class="name">Men's Haircut</span><span class="desc">Scissor or clipper cut, styled and finished<span class="zh" lang="zh-Hans">剪刀或推剪造型,精修完成</span></span></div>
+          <span class="price">$40</span>
+        </div>
+        <div class="menu-row">
+          <div><span class="name">Blowout</span><span class="desc">Wash, blow-dry, and smooth finish<span class="zh" lang="zh-Hans">洗发、吹风,打造顺滑造型</span></span></div>
+          <span class="price">$50</span>
+        </div>
+        <div class="menu-row">
+          <div><span class="name">Kids Cut</span><span class="desc">12 and under<span class="zh" lang="zh-Hans">12岁及以下儿童</span></span></div>
+          <span class="price">$32</span>
+        </div>
+      </div>
+      <div class="menu-col reveal">
+        <h3>Color</h3>
+        <div class="menu-row">
+          <div><span class="name">Full Color</span><span class="desc">Single-process color, root to ends<span class="zh" lang="zh-Hans">单次染发,从发根到发梢</span></span></div>
+          <span class="price">$110</span>
+        </div>
+        <div class="menu-row">
+          <div><span class="name">Highlights / Balayage</span><span class="desc">Hand-painted or foiled, blended finish<span class="zh" lang="zh-Hans">手工挑染或锡纸渐变,自然融合</span></span></div>
+          <span class="price">$175</span>
+        </div>
+        <div class="menu-row">
+          <div><span class="name">Root Touch-Up</span><span class="desc">Color refresh at the root<span class="zh" lang="zh-Hans">发根补染</span></span></div>
+          <span class="price">$85</span>
+        </div>
+        <div class="menu-row">
+          <div><span class="name">Gloss / Toner</span><span class="desc">Shine and tone refresh, add-on or standalone<span class="zh" lang="zh-Hans">亮泽护色,可单独或搭配使用</span></span></div>
+          <span class="price">$50</span>
+        </div>
+      </div>
+    </div>
+    <p class="menu-note reveal">Prices shown are sample rates for this concept site — swap in your real menu any time.</p>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<!-- [EDIT] REVIEWS — 3 sample testimonial cards (quote, first-name + last-initial, service, month/year). Keep these
+     clearly generic/placeholder-quality unless the user gives you real reviews — see the "no fabricated ratings" note
+     in SKILL.md before writing any aggregate star rating. -->
+<section class="light section-pad" id="reviews">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Word on Pell St</span>
+      <h2>What Clients Say</h2>
+      <p class="lede">A few notes from regulars — sample reviews to show how testimonials can look once real ones come in.</p>
+    </div>
+    <div class="review-grid">
+      <div class="review-card reveal">
+        <div class="stars" aria-label="5 out of 5 stars">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6L10 14.9 4.6 17.3l1.3-6L1.3 7.2l6.1-.6L10 1Z"/></svg>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6L10 14.9 4.6 17.3l1.3-6L1.3 7.2l6.1-.6L10 1Z"/></svg>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6L10 14.9 4.6 17.3l1.3-6L1.3 7.2l6.1-.6L10 1Z"/></svg>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6L10 14.9 4.6 17.3l1.3-6L1.3 7.2l6.1-.6L10 1Z"/></svg>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6L10 14.9 4.6 17.3l1.3-6L1.3 7.2l6.1-.6L10 1Z"/></svg>
+        </div>
+        <p class="review-quote">"Been coming here for my color for years — always leaves looking natural, never overdone."<br><span class="zh" lang="zh-Hans">在这里做头发好多年了——每次出来的颜色都很自然,从不过火。</span></p>
+        <div class="review-who">
+          <span class="review-avatar" aria-hidden="true">G.</span>
+          <div><span class="name">Grace L.</span><span class="svc">Balayage, Aug 2026</span></div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars" aria-label="5 out of 5 stars">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6L10 14.9 4.6 17.3l1.3-6L1.3 7.2l6.1-.6L10 1Z"/></svg>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6L10 14.9 4.6 17.3l1.3-6L1.3 7.2l6.1-.6L10 1Z"/></svg>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6L10 14.9 4.6 17.3l1.3-6L1.3 7.2l6.1-.6L10 1Z"/></svg>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6L10 14.9 4.6 17.3l1.3-6L1.3 7.2l6.1-.6L10 1Z"/></svg>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6L10 14.9 4.6 17.3l1.3-6L1.3 7.2l6.1-.6L10 1Z"/></svg>
+        </div>
+        <p class="review-quote">"Quick, no-nonsense haircut and they got exactly what I asked for. My new go-to on Pell Street."<br><span class="zh" lang="zh-Hans">剪得又快又干净利落,完全剪出了我想要的效果,现在是我在佩尔街的常去理发店了。</span></p>
+        <div class="review-who">
+          <span class="review-avatar" aria-hidden="true">J.</span>
+          <div><span class="name">Jason W.</span><span class="svc">Men's Haircut, Jul 2026</span></div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars" aria-label="5 out of 5 stars">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6L10 14.9 4.6 17.3l1.3-6L1.3 7.2l6.1-.6L10 1Z"/></svg>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6L10 14.9 4.6 17.3l1.3-6L1.3 7.2l6.1-.6L10 1Z"/></svg>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6L10 14.9 4.6 17.3l1.3-6L1.3 7.2l6.1-.6L10 1Z"/></svg>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6L10 14.9 4.6 17.3l1.3-6L1.3 7.2l6.1-.6L10 1Z"/></svg>
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6L10 14.9 4.6 17.3l1.3-6L1.3 7.2l6.1-.6L10 1Z"/></svg>
+        </div>
+        <p class="review-quote">"Brought my daughter in for her first real haircut, the stylist was so patient with her. We'll be back."<br><span class="zh" lang="zh-Hans">带女儿来剪她人生第一次正式的头发,发型师特别有耐心,我们还会再来的。</span></p>
+        <div class="review-who">
+          <span class="review-avatar" aria-hidden="true">L.</span>
+          <div><span class="name">Lily M.</span><span class="svc">Kids Cut, Jul 2026</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY ============ -->
+<!-- [EDIT] STORY — circular-framed video (clip #2 via story.mp4/story-poster.jpg), "since [year]" badge, 2 short
+     paragraphs on the shop's background/philosophy, 3 stats (years / team size / sq ft or chair count). -->
+<section class="dark section-pad" id="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-frame reveal">
+        <div class="ring">
+          <video autoplay muted loop playsinline poster="assets/story-poster.jpg">
+            <source src="assets/story.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="badge">SINCE<br>2012</div>
+      </div>
+      <div class="story-copy reveal">
+        <span class="eyebrow">Our Story</span>
+        <h2>The Story of 22 Pell</h2>
+        <p>22 Pell Hair Salon has been part of the Chinatown streetscape for over a decade, built on precision cuts, honest color work, and a team that knows their regulars by name.<br><span class="zh" lang="zh-Hans">22 Pell Hair Salon 扎根唐人街十余年,凭借精准的剪裁、诚信的染发工艺,以及一支熟悉每位常客的团队,赢得街坊的信赖。</span></p>
+        <p>No overbooking, no rushed color jobs — just skilled stylists, quality products, and a shop that's become a fixture on Pell Street.<br><span class="zh" lang="zh-Hans">不超额预约,不敷衍染发——只有经验丰富的发型师、优质的产品,以及这家已成为佩尔街地标的理发店。</span></p>
+        <div class="story-stats">
+          <div class="story-stat"><div class="num">14</div><div class="label">Years Open</div></div>
+          <div class="story-stat"><div class="num">6</div><div class="label">Stylists</div></div>
+          <div class="story-stat"><div class="num">8</div><div class="label">Styling Chairs</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WATCH THE CRAFT ============ -->
+<!-- [EDIT] CRAFT VIDEO — clip #3 (gallery.mp4/gallery-poster.jpg), click-to-play (starts paused, respects
+     prefers-reduced-motion). Caption should name a specific technique/detail, not just repeat the tagline. -->
+<section class="light section-pad-sm">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Behind the Chair</span>
+      <h2>Watch the Craft</h2>
+    </div>
+    <div class="craft reveal">
+      <video muted loop playsinline poster="assets/gallery-poster.jpg" id="craftVideo">
+        <source src="assets/gallery.mp4" type="video/mp4">
+      </video>
+      <div class="craft-caption">
+        <div>
+          <h3>Every cut and color, done by hand</h3>
+          <p>Precision layers, hand-painted color, no shortcuts — footage shot right in the salon.<br><span class="zh" lang="zh-Hans">精细层次剪裁,手工挑染上色,绝不偷工减料——影片实拍自店内现场。</span></p>
+        </div>
+        <button class="sound-toggle" id="craftPlayToggle" aria-label="Play video" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" id="craftPlayIcon"><path d="M8 5v14l11-7-11-7Z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<!-- [EDIT] CTA BAND — closing pitch line + phone call button + "Get Directions" (Google Maps search link, already
+     parameterized by address in the query string below). -->
+<section class="cta-band">
+  <div class="container">
+    <span class="eyebrow reveal">Walk-ins Welcome</span>
+    <h2 class="reveal" style="margin-top:14px;">Ready For Your Next Look?</h2>
+    <p class="reveal">Stop by 22 Pell St or call ahead to book your appointment — same-week openings usually available.<br><span class="zh" lang="zh-Hans">欢迎随时光临22 Pell St,或提前致电预约——通常本周即可安排档期。</span></p>
+    <div class="cta-actions reveal">
+      <a class="btn btn-primary" href="tel:+12122336789">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.78.66 2.61a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.47-1.27a2 2 0 0 1 2.11-.45c.83.32 1.71.54 2.61.66A2 2 0 0 1 22 16.92Z"/></svg>
+        Call (212) 233-6789
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<!-- [EDIT] CONTACT — address, phone, hours (3 lines), OpenStreetMap embed bbox + marker (recompute for the real
+     address — see SKILL.md "map embed" note), Google Maps search link, and the contact form's service <select> options
+     (match the pricing menu above). Form is a visual demo only — see the note in form-note / form-status text. -->
+<section class="dark section-pad" id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Visit The Salon</span>
+      <h2>Find Us On Pell Street</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="info-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-7.5 8-13a8 8 0 1 0-16 0c0 5.5 8 13 8 13Z"/><circle cx="12" cy="9" r="3"/></svg>
+          <div><h4>Address</h4><p>22 Pell St, Suite B<br>New York, NY 10013</p></div>
+        </div>
+        <div class="info-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.78.66 2.61a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.47-1.27a2 2 0 0 1 2.11-.45c.83.32 1.71.54 2.61.66A2 2 0 0 1 22 16.92Z"/></svg>
+          <div><h4>Phone</h4><p><a class="plain" href="tel:+12122336789">(212) 233-6789</a></p></div>
+        </div>
+        <div class="info-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <div><h4>Hours</h4><p>Tue – Fri: 10am – 7pm<br>Sat: 10am – 6pm &nbsp;·&nbsp; Sun: 11am – 5pm<br>Closed Mondays</p></div>
+        </div>
+        <div class="map-frame" style="margin-top:28px;">
+          <iframe title="Map showing 22 Pell St, New York, NY" loading="lazy"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-74.000055%2C40.713477%2C-73.996055%2C40.716477&layer=mapnik&marker=40.714977%2C-73.998055"></iframe>
+        </div>
+        <a class="link-underline" style="display:inline-block; margin-top:16px;" href="https://www.google.com/maps/search/?api=1&query=22+Pell+St+New+York+NY+10013" target="_blank" rel="noopener">Open in Google Maps</a>
+      </div>
+      <div class="reveal">
+        <form class="contact-form" id="contactForm">
+          <div class="field-row">
+            <div class="field">
+              <label for="fname">Name</label>
+              <input type="text" id="fname" name="name" required autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="fphone">Phone</label>
+              <input type="tel" id="fphone" name="phone" required autocomplete="tel">
+            </div>
+          </div>
+          <div class="field">
+            <label for="fservice">Preferred Service</label>
+            <select id="fservice" name="service">
+              <option>Women's Haircut</option>
+              <option>Men's Haircut</option>
+              <option>Blowout</option>
+              <option>Color / Highlights</option>
+              <option>Root Touch-Up</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="fmsg">Message (optional)</label>
+            <textarea id="fmsg" name="message" placeholder="Preferred day/time, stylist request, etc."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Request an Appointment</button>
+          <p class="form-note">This form is a demo — hook it up to email or a booking tool like Square or Fresha to go live. For now, call <a class="plain" href="tel:+12122336789" style="color:var(--brass-2)">(212) 233-6789</a> to book.</p>
+          <div class="form-status ok" id="formStatus" role="status">Thanks — this is a demo form, so nothing was actually sent. Call or walk in and we'll get you in the chair.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<!-- [EDIT] FOOTER — brand blurb, social links (Instagram href), address/phone repeated, hours repeated, copyright year/name. -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="logo"><img src="assets/logo.png" alt="" aria-hidden="true" style="width:30px;height:30px;object-fit:contain;flex:none;"><span class="wordmark" style="color:var(--cream);">22 Pell Hair Salon</span></span>
+        <p>A Chinatown hair salon on Pell Street — precision cuts, color, and styling, done right.<br><span class="zh" lang="zh-Hans">位于佩尔街的唐人街理发店——专业剪裁、染发与造型,值得信赖。</span></p>
+        <div class="social-row">
+          <a href="#" aria-label="22 Pell Hair Salon on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="tel:+12122336789" aria-label="Call 22 Pell Hair Salon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.78.66 2.61a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.47-1.27a2 2 0 0 1 2.11-.45c.83.32 1.71.54 2.61.66A2 2 0 0 1 22 16.92Z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#menu">Pricing</a></li>
+          <li><a href="#story">Our Story</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <ul>
+          <li>22 Pell St, Suite B</li>
+          <li>New York, NY 10013</li>
+          <li><a class="plain" href="tel:+12122336789">(212) 233-6789</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Hours</h4>
+        <ul>
+          <li>Tue – Fri: 10am – 7pm</li>
+          <li>Sat: 10am – 6pm · Sun: 11am – 5pm</li>
+          <li>Closed Mondays</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 22 Pell Hair Salon. All rights reserved.</span>
+      <span>Concept design — sample content for demonstration.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Sticky nav background on scroll
+  var nav = document.getElementById('siteNav');
+  function onScroll(){
+    if(window.scrollY > 40){ nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); }
+  }
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  // Mobile menu
+  var toggle = document.getElementById('menuToggle');
+  var panel = document.getElementById('mobilePanel');
+  var closeBtn = document.getElementById('mobileClose');
+  function openPanel(){
+    panel.classList.add('open');
+    toggle.setAttribute('aria-expanded','true');
+    document.body.style.overflow='hidden';
+    closeBtn.focus();
+  }
+  function closePanel(){
+    panel.classList.remove('open');
+    toggle.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+    toggle.focus();
+  }
+  toggle.addEventListener('click', openPanel);
+  closeBtn.addEventListener('click', closePanel);
+  panel.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closePanel); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && panel.classList.contains('open')) closePanel();
+  });
+
+  // Reveal-on-scroll
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll('.reveal');
+  if(reduceMotion || !('IntersectionObserver' in window)){
+    targets.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); }
+      });
+    }, {threshold:0.14, rootMargin:'0px 0px -60px 0px'});
+    targets.forEach(function(el){ io.observe(el); });
+  }
+
+  // Respect reduced motion for background videos: pause autoplay loops, keep poster
+  if(reduceMotion){
+    document.querySelectorAll('video[autoplay]').forEach(function(v){
+      v.removeAttribute('autoplay');
+      v.pause();
+    });
+  }
+
+  // Craft video play/pause toggle
+  var craftVideo = document.getElementById('craftVideo');
+  var craftBtn = document.getElementById('craftPlayToggle');
+  var craftIcon = document.getElementById('craftPlayIcon');
+  var playPath = 'M8 5v14l11-7-11-7Z';
+  var pausePath = 'M7 5h4v14H7zM13 5h4v14h-4z';
+  craftBtn.addEventListener('click', function(){
+    if(craftVideo.paused){
+      craftVideo.play();
+      craftBtn.setAttribute('aria-pressed','true');
+      craftBtn.setAttribute('aria-label','Pause video');
+      craftIcon.innerHTML = '<path d="'+pausePath+'"/>';
+    } else {
+      craftVideo.pause();
+      craftBtn.setAttribute('aria-pressed','false');
+      craftBtn.setAttribute('aria-label','Play video');
+      craftIcon.innerHTML = '<path d="'+playPath+'"/>';
+    }
+  });
+
+  // Demo contact form
+  var form = document.getElementById('contactForm');
+  var status = document.getElementById('formStatus');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    status.classList.add('show');
+    status.setAttribute('tabindex','-1');
+    status.focus();
+  });
+})();
+</script>
+</body>
+</html>
